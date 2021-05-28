@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="我的第一篇文章, 艾尔之子">
+    <meta name="keywords" content="几何校正, 艾尔之子">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>我的第一篇文章 | 艾尔之子</title>
+    <title>几何校正 | 艾尔之子</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -298,7 +298,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'e1217261b31831504417f62056036d10fa896f8d05b4f8b310bf46ef6c16f886';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">我的第一篇文章</h1>
+                    <h1 class="description center-align post-title">几何校正</h1>
                 </div>
             </div>
         </div>
@@ -432,14 +432,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CG/">
-                                <span class="chip bg-color">CG</span>
+                            <a href="/tags/RS/">
+                                <span class="chip bg-color">RS</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/RS/" class="post-category">
+                                -RS
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -472,47 +481,42 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="伪代码描述DDA算法和Bresenham算法，并用这两个算法计算由-0-0-8-4-经过的所有像素坐标"><a href="#伪代码描述DDA算法和Bresenham算法，并用这两个算法计算由-0-0-8-4-经过的所有像素坐标" class="headerlink" title="伪代码描述DDA算法和Bresenham算法，并用这两个算法计算由(0,0)-(8,4)经过的所有像素坐标"></a>伪代码描述DDA算法和Bresenham算法，并用这两个算法计算由(0,0)-(8,4)经过的所有像素坐标</h3><h4 id="DDA算法伪代码"><a href="#DDA算法伪代码" class="headerlink" title="DDA算法伪代码"></a>DDA算法伪代码</h4><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">DDA</span><span class="token punctuation">(</span><span class="token keyword">int</span> x0<span class="token punctuation">,</span><span class="token keyword">int</span> y0<span class="token punctuation">,</span><span class="token keyword">int</span> x1<span class="token punctuation">,</span><span class="token keyword">int</span> y1<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> dx<span class="token operator">=</span>x1<span class="token operator">-</span>x0<span class="token punctuation">,</span>dy<span class="token operator">=</span>y1<span class="token operator">-</span>y0<span class="token punctuation">;</span>
-    <span class="token keyword">float</span> x<span class="token operator">=</span>x0<span class="token punctuation">,</span>y<span class="token operator">=</span>y0<span class="token punctuation">,</span>xlncre<span class="token punctuation">,</span>ylncre<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> i<span class="token punctuation">,</span>k<span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span>dx<span class="token punctuation">)</span><span class="token operator">></span><span class="token function">abs</span><span class="token punctuation">(</span>dy<span class="token punctuation">)</span><span class="token punctuation">)</span>k<span class="token operator">=</span><span class="token function">abs</span><span class="token punctuation">(</span>dx<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span> k<span class="token operator">=</span><span class="token function">abs</span><span class="token punctuation">(</span>dy<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    xlncre<span class="token operator">=</span>dy<span class="token operator">/</span>k<span class="token punctuation">;</span>ylincre<span class="token operator">=</span>dy<span class="token operator">/</span>k<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>k<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-		<span class="token function">put</span><span class="token punctuation">(</span>x<span class="token operator">+</span><span class="token number">0.5</span><span class="token punctuation">,</span>y<span class="token operator">+</span><span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        x<span class="token operator">+=</span>xlncre<span class="token punctuation">;</span>
-        y<span class="token operator">+=</span>ylncre<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="Bresenham算法伪代码"><a href="#Bresenham算法伪代码" class="headerlink" title="Bresenham算法伪代码"></a>Bresenham算法伪代码</h4><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">Bresenham</span><span class="token punctuation">(</span><span class="token keyword">int</span> x0<span class="token punctuation">,</span><span class="token keyword">int</span> y0<span class="token punctuation">,</span><span class="token keyword">int</span> x1<span class="token punctuation">,</span><span class="token keyword">int</span> y1<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> dx<span class="token operator">=</span><span class="token function">abs</span><span class="token punctuation">(</span>x1<span class="token operator">-</span>x0<span class="token punctuation">)</span><span class="token punctuation">,</span>dy<span class="token operator">=</span><span class="token function">abs</span><span class="token punctuation">(</span>y1<span class="token operator">-</span>y0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> x<span class="token operator">=</span>x0<span class="token punctuation">,</span>y<span class="token operator">=</span>y0<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> s1<span class="token punctuation">,</span>s2<span class="token punctuation">,</span>i<span class="token punctuation">,</span>p<span class="token punctuation">,</span>n<span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>x0<span class="token operator">></span>x1<span class="token punctuation">)</span>s1<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span> s1<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>y0<span class="token operator">></span>y1<span class="token punctuation">)</span>s2<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span> s2<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>dy<span class="token operator">></span>dx<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token function">exchange</span><span class="token punctuation">(</span>dx<span class="token punctuation">,</span>dy<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">else</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    p<span class="token operator">=</span><span class="token number">2</span>dy<span class="token operator">-</span>dx<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>n<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token operator">&lt;=</span>dx<span class="token punctuation">,</span>n<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token function">put</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>p<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> y<span class="token operator">=</span>y<span class="token operator">+</span>s2<span class="token punctuation">;</span>
-            <span class="token keyword">else</span> x<span class="token operator">=</span>x<span class="token operator">+</span>s1<span class="token punctuation">;</span>
-            p<span class="token operator">=</span>p<span class="token operator">-</span><span class="token number">2</span><span class="token operator">*</span>dx<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>x<span class="token operator">=</span>x<span class="token operator">+</span>s1<span class="token punctuation">;</span>
-        <span class="token keyword">else</span> y<span class="token operator">=</span>y<span class="token operator">+</span>s2<span class="token punctuation">;</span>
-        p<span class="token operator">=</span>p<span class="token operator">+</span><span class="token operator">*</span>dy<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+                <h1 id="几何校正"><a href="#几何校正" class="headerlink" title="几何校正"></a>几何校正</h1><p><strong>分为数字图像几何校正与几何精校正</strong></p>
+<p>几何校正的两个换节：<br>    1.像素坐标变换——解决位置问题<br>        方法：共线方程、多项式模型<br>    2.灰度重采样——解决亮度问题<br>        最邻近像元采样法<br>        双线性内插法<br>        三次卷积重采样法</p>
+<p><strong>多项式校正</strong><br>    基本思想:回避成像的空间几何过程，直接对图像变形的本身进行数学模拟。把遥感图像的总体变形看作是平移、缩放、旋转、偏扭、弯曲以及更高次的基本变形的综合作用结果。把原始图像变形看成是某种曲面，输出图像作为规则平面。从理论上讲，任何曲面都能以适当高次的多项式来拟合。用一个适当的多项式来描述校正前后图像相应点之间的坐标关系<br>    1.确定校正的多项式模型<br>    2.选取若干控制点，利用有限个控制点的已知坐标，求解多项式系数<br>    3.将各像元的坐标带入多项式进行计算，求得校正后的坐标<br>    4.位置进行变换，变换的同时进行灰度重采样<br>    5.对结果进行精度评定</p>
+<ol>
+<li><p>确定校正模型一般多项式校正变换公式：<br><img src="D:\College\闲玩\blog\hexo\source\image-20210528154431811.png" alt="image-20210528154431811"></p>
+<p>x,y为某像素原始图像坐标 X,Y为同名像素的地面（或地图）坐标</p>
+</li>
+<li><p>控制点的选取要求:影像上的明显地物点、影像中均匀分布、要满足一定的数量要求<br>地面控制点的获取途径：GPS、地形图、矢量图、地图、校正后的影像<br>控制点应选取图像上易分辨且较精细的特征点，如道路交叉点、河流弯曲或分叉处、湖泊边缘、飞机场、城廓边缘等。<br>地面控制点上的地物不随时间而变化，以保证当两幅不同时段的图像或地图几何校正时，可以同时识别出来。<br>特征变化大的地区应多选一些。<br>特征变化大的地区应多选一些。<br>一般来说GCP的数量至少要<em><strong>大于</strong></em>(n+1)(n+2)/2，n是多项式的阶数。</p>
+</li>
+<li><p>位置变换与灰度重采样:确定校正后图像的行列数值，并找到新图像中每一像元的亮度值。<br>像素坐标变换:将图像坐标转换为地面坐标，有直接法与间接法。<br><img src="D:\College\闲玩\blog\hexo\source\image-20210528160355343.png" alt="image-20210528160355343" style="zoom:90%;" />直接法:把图像的像点位置x y换算成地面坐标时，同时将x y的灰度值搬到新位置上。<br>不足：原始图像是规则的，校正后可能就不是规则的，还需要重排。<img src="D:\College\闲玩\blog\hexo\source\image-20210528160433724.png" alt="image-20210528160433724" style="zoom:90%;" /></p>
+<p>间接法：由地面坐标反算的图像坐标有可能不是整数，没有灰度值。这就需要利用周围的灰度值计算这一点的灰度值，也就是所谓的重采样。<br>重采样方法三种：<br><img src="D:\College\闲玩\blog\hexo\source\image-20210528161219594.png" alt="image-20210528161219594"><br><img src="D:\College\闲玩\blog\hexo\source\image-20210528161247153.png" alt="image-20210528161247153"><br><img src="D:\College\闲玩\blog\hexo\source\image-20210528161315189.png" alt="image-20210528161315189"><br><img src="D:\College\闲玩\blog\hexo\source\image-20210528161332332.png" alt="image-20210528161332332"></p>
+</li>
+<li><p>精度评定</p>
+</li>
+</ol>
+<p><strong>一、填空题：</strong></p>
+<p><strong>1、控制点数目的最小值按未知系数的多少来确定。k阶多项式控制点的最少数目为＿(k+1)(k+2)/2＿。</strong></p>
+<p><strong>2、多项式拟合法纠正中控 制点的数量要求，一次项最少需要＿3＿个控制点，二次项最少项需要＿6＿个控制点，三次项最少需要＿10＿个控制点。</strong></p>
+<p><strong>二、不定项选择题：(单项或多项选择)</strong></p>
+<p><strong>1、通过多项式进行几何校正时，需要在待校正图像与参考图像之间选择同名控制点，其选取原则包括。</strong>  ①②③④<br>①易于识别并且不随时间变化的点，如道路交叉点、河流拐弯处、水域的边界、机场等<br>②特征变化大的地区应多选些<br>③图像边缘部分要选取控制点，以避免外推<br>④同名控制点要在图像上均匀分布</p>
+<p><strong>2、控制点获取方法主要有。</strong>①②④<br>①从地形图中提取GCP坐标<br>②从经过几何校正的影像中提取GCP坐标<br>③从没有经过几何校正的影像中提取GCP坐标<br>④通过GPS外业测量获取GCP坐标</p>
+<p><strong>3、多项式纠正用一次项时必须至少有＿③＿。</strong><br>①1个控制点    ②2个控制点    ③3个控制点    ④4个控制点</p>
+<p><strong>4、多项式纠正用二次项时必须至少有＿④＿。</strong><br>①3个控制点    ②4个控制点    ③5个控制点    ④6个控制点</p>
+<p><strong>5、多项式纠正用一次项可以改正图像的＿①＿＿。</strong><br>①线性变形误差      ②非线性变形误差     ③前两者</p>
+<p><strong>三、问答题：</strong></p>
+<p><strong>1、说明遥感图像几何变形误差的主要来源。</strong></p>
+<ul>
+<li>传感器成像方式引起的图像变形</li>
+<li>传感器外方位元素变化的影响：传感器成像时的位置、姿态角偏离标准位置时产生的图像变形。</li>
+<li>地形起伏引起的像点位移</li>
+<li>地球曲率引起的图像变形</li>
+<li>大气折射引起的图像变形</li>
+<li>地球自转的影响</li>
+</ul>
+<p><strong>2、试述多项式纠正法纠正卫星图像的原理和步骤。</strong></p>
+<p><strong>3、几何校正中常用的灰度重采样方法有哪三种？</strong></p>
 
                 
             </div>
@@ -539,7 +543,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hooooon174.github.io/2021/05/28/test/">https://hooooon174.github.io/2021/05/28/test/</a>
+                    <a href="https://hooooon174.github.io/2021/05/28/rs/">https://hooooon174.github.io/2021/05/28/rs/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -577,8 +581,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CG/">
-                                    <span class="chip bg-color">CG</span>
+                                <a href="/tags/RS/">
+                                    <span class="chip bg-color">RS</span>
                                 </a>
                             
                         </div>
@@ -748,9 +752,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/05/28/rs/">
                     <div class="card-image">
@@ -768,9 +773,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -783,6 +788,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -801,13 +807,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/27/hello-world/">
+                <a href="/2021/05/28/test/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="我的第一篇文章">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">我的第一篇文章</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -818,7 +824,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-28
                             </span>
                         <span class="publish-author">
                             
@@ -827,6 +833,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CG/">
+                        <span class="chip bg-color">CG</span>
+                    </a>
+                    
                 </div>
                 
             </div>
