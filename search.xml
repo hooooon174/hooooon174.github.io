@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>辐射校正</title>
+      <link href="2021/05/30/fu-she-xiao-zheng/"/>
+      <url>2021/05/30/fu-she-xiao-zheng/</url>
+      
+        <content type="html"><![CDATA[<style>    img{        width:70%;        padding-left:15%    }</style><h1 id="辐射校正"><a href="#辐射校正" class="headerlink" title="辐射校正"></a>辐射校正</h1><h2 id="一名词解释"><a href="#一名词解释" class="headerlink" title="一名词解释"></a><strong>一名词解释</strong></h2><ol><li><strong>辐射误差</strong></li><li><strong>辐射定标</strong></li><li><strong>相对定标</strong></li><li><strong>绝对定标</strong></li><li><strong>辐射校正</strong></li><li><strong>大气校正</strong></li></ol><h2 id="二填空题"><a href="#二填空题" class="headerlink" title="二填空题"></a><strong>二填空题</strong></h2><ol><li><p><strong>通常把电磁波通过大气层时较少被反射、吸收或散射的，通过率较高的波段称为＿＿＿。</strong></p></li><li><p><strong>辐射校正包括三部分的内容：＿＿＿、＿＿＿和＿＿＿。</strong></p></li><li><p><strong>传感器所能接收的太阳光包括＿＿＿、被大气散射辐射的太阳光在地表的反射辐射、＿＿＿三部分。</strong></p></li><li><p><strong>在可见光波段，大气的影响主要表现为＿＿＿；在近红外，大气的影响主要表现为＿＿＿。</strong></p></li><li><p><strong>大气散射校正主要有三种方法：（1）＿＿＿（2）＿＿＿（3）＿＿＿。</strong></p></li><li><p><strong>大气的散射与辐射光波长有密切的关系，对短波长的散射比长波长的散射要＿＿＿得多。</strong></p></li><li><p><strong>为了尽量减少＿＿＿和＿＿＿引起的辐射误差，遥感卫星大多设计在同一个地方时间通过当地上空，但由于季节的变化和地理经纬度的变化，两者的变化是不可避免的。</strong></p></li><li><p><strong>在使用透镜的光学系统中，由于镜头光学特性的非均匀性，在其成像平面上存在着边缘部分比中间部分暗的现象，称为＿＿＿。</strong></p></li></ol><h2 id="三问答题"><a href="#三问答题" class="headerlink" title="三问答题"></a><strong>三问答题</strong></h2><ol><li><p><strong>辐射误差产生的主要原因有哪些?</strong></p></li><li><p><strong>因大气辐射引起的辐射误差，其相应的校正方法有哪些?</strong></p></li><li><p><strong>太阳高度角和日地距离校正的目的是什么？</strong></p></li><li><p><strong>地形辐射校正的目的是什么？</strong></p></li></ol><h2 id="四计算题"><a href="#四计算题" class="headerlink" title="四计算题"></a><strong>四计算题</strong></h2><ol><li><strong>给出一组大气校正时地面实测值与遥感图像上的灰度值，能够利用回归分析的方法计算得到大气干扰值。</strong></li><li><strong>对于多光谱图像能够利用给出的红外波段，采用直方图或者回归分析法估算可见光波段的大气干扰值。</strong></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> -RS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>几何校正</title>
       <link href="2021/05/28/ji-he-xiao-zheng/"/>
       <url>2021/05/28/ji-he-xiao-zheng/</url>

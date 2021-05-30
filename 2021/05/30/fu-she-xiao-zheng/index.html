@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="几何校正, 艾尔之子">
+    <meta name="keywords" content="辐射校正, 艾尔之子">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>几何校正 | 艾尔之子</title>
+    <title>辐射校正 | 艾尔之子</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">几何校正</h1>
+                    <h1 class="description center-align post-title">辐射校正</h1>
                 </div>
             </div>
         </div>
@@ -457,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-28
+                    2021-05-30
                 </div>
                 
 
@@ -488,40 +488,46 @@
     }
 </style>
 
-
-<h1 id="几何校正"><a href="#几何校正" class="headerlink" title="几何校正"></a>几何校正</h1><p><strong>分为数字图像几何校正与几何精校正</strong></p>
-<p>几何校正的两个换节：<br>    1.像素坐标变换——解决位置问题<br>        方法：共线方程、多项式模型<br>    2.灰度重采样——解决亮度问题<br>        最邻近像元采样法<br>        双线性内插法<br>        三次卷积重采样法</p>
-<p><strong>多项式校正</strong><br>    基本思想:回避成像的空间几何过程，直接对图像变形的本身进行数学模拟。把遥感图像的总体变形看作是平移、缩放、旋转、偏扭、弯曲以及更高次的基本变形的综合作用结果。把原始图像变形看成是某种曲面，输出图像作为规则平面。从理论上讲，任何曲面都能以适当高次的多项式来拟合。用一个适当的多项式来描述校正前后图像相应点之间的坐标关系<br>    1.确定校正的多项式模型<br>    2.选取若干控制点，利用有限个控制点的已知坐标，求解多项式系数<br>    3.将各像元的坐标带入多项式进行计算，求得校正后的坐标<br>    4.位置进行变换，变换的同时进行灰度重采样<br>    5.对结果进行精度评定</p>
-<ol>
-<li><p>确定校正模型一般多项式校正变换公式：<br> <img src="/2021/05/28/ji-he-xiao-zheng/image-20210528154431811.png"><br>x,y为某像素原始图像坐标 X,Y为同名像素的地面（或地图）坐标</p>
+<h1 id="辐射校正"><a href="#辐射校正" class="headerlink" title="辐射校正"></a>辐射校正</h1><h2 id="一名词解释"><a href="#一名词解释" class="headerlink" title="一名词解释"></a><strong>一名词解释</strong></h2><ol>
+<li><strong>辐射误差</strong></li>
+<li><strong>辐射定标</strong></li>
+<li><strong>相对定标</strong></li>
+<li><strong>绝对定标</strong></li>
+<li><strong>辐射校正</strong></li>
+<li><strong>大气校正</strong></li>
+</ol>
+<h2 id="二填空题"><a href="#二填空题" class="headerlink" title="二填空题"></a><strong>二填空题</strong></h2><ol>
+<li><p><strong>通常把电磁波通过大气层时较少被反射、吸收或散射的，通过率较高的波段称为＿＿＿。</strong></p>
 </li>
-<li><p>控制点的选取要求:影像上的明显地物点、影像中均匀分布、要满足一定的数量要求<br>地面控制点的获取途径：GPS、地形图、矢量图、地图、校正后的影像<br>控制点应选取图像上易分辨且较精细的特征点，如道路交叉点、河流弯曲或分叉处、湖泊边缘、飞机场、城廓边缘等。<br>地面控制点上的地物不随时间而变化，以保证当两幅不同时段的图像或地图几何校正时，可以同时识别出来。<br>特征变化大的地区应多选一些。<br>特征变化大的地区应多选一些。<br>一般来说GCP的数量至少要<em><strong>大于</strong></em>(n+1)(n+2)/2，n是多项式的阶数。</p>
+<li><p><strong>辐射校正包括三部分的内容：＿＿＿、＿＿＿和＿＿＿。</strong></p>
 </li>
-<li><p>位置变换与灰度重采样:确定校正后图像的行列数值，并找到新图像中每一像元的亮度值。<br>像素坐标变换:将图像坐标转换为地面坐标，有直接法与间接法。<br><img src="/2021/05/28/ji-he-xiao-zheng/image-20210528160355343.png"><br>直接法:把图像的像点位置x y换算成地面坐标时，同时将x y的灰度值搬到新位置上。<br>不足：原始图像是规则的，校正后可能就不是规则的，还需要重排。<br><img src="/2021/05/28/ji-he-xiao-zheng/image-20210528160433724.png"></p>
-<p>间接法：由地面坐标反算的图像坐标有可能不是整数，没有灰度值。这就需要利用周围的灰度值计算这一点的灰度值，也就是所谓的重采样。<br>重采样方法三种：</p>
-<p><img src="/2021/05/28/ji-he-xiao-zheng/image-20210528161219594.png"><br><img src="/2021/05/28/ji-he-xiao-zheng/image-20210528161247153.png"><br><img src="/2021/05/28/ji-he-xiao-zheng/image-20210528161315189.png"><br><img src="/2021/05/28/ji-he-xiao-zheng/image-20210528161332332.png">  </p>
+<li><p><strong>传感器所能接收的太阳光包括＿＿＿、被大气散射辐射的太阳光在地表的反射辐射、＿＿＿三部分。</strong></p>
 </li>
-<li><p>精度评定</p>
+<li><p><strong>在可见光波段，大气的影响主要表现为＿＿＿；在近红外，大气的影响主要表现为＿＿＿。</strong></p>
+</li>
+<li><p><strong>大气散射校正主要有三种方法：（1）＿＿＿（2）＿＿＿（3）＿＿＿。</strong></p>
+</li>
+<li><p><strong>大气的散射与辐射光波长有密切的关系，对短波长的散射比长波长的散射要＿＿＿得多。</strong></p>
+</li>
+<li><p><strong>为了尽量减少＿＿＿和＿＿＿引起的辐射误差，遥感卫星大多设计在同一个地方时间通过当地上空，但由于季节的变化和地理经纬度的变化，两者的变化是不可避免的。</strong></p>
+</li>
+<li><p><strong>在使用透镜的光学系统中，由于镜头光学特性的非均匀性，在其成像平面上存在着边缘部分比中间部分暗的现象，称为＿＿＿。</strong></p>
 </li>
 </ol>
-<h2 id="一、填空题："><a href="#一、填空题：" class="headerlink" title="一、填空题："></a><strong>一、填空题：</strong></h2><p><strong>1、控制点数目的最小值按未知系数的多少来确定。k阶多项式控制点的最少数目为＿(k+1)(k+2)/2＿。</strong></p>
-<p><strong>2、多项式拟合法纠正中控 制点的数量要求，一次项最少需要＿3＿个控制点，二次项最少项需要＿6＿个控制点，三次项最少需要＿10＿个控制点。</strong></p>
-<h2 id="二、不定项选择题：-单项或多项选择"><a href="#二、不定项选择题：-单项或多项选择" class="headerlink" title="二、不定项选择题：(单项或多项选择)"></a><strong>二、不定项选择题：(单项或多项选择)</strong></h2><p><strong>1、通过多项式进行几何校正时，需要在待校正图像与参考图像之间选择同名控制点，其选取原则包括。</strong>  ①②③④<br>①易于识别并且不随时间变化的点，如道路交叉点、河流拐弯处、水域的边界、机场等<br>②特征变化大的地区应多选些<br>③图像边缘部分要选取控制点，以避免外推<br>④同名控制点要在图像上均匀分布</p>
-<p><strong>2、控制点获取方法主要有。</strong>①②④<br>①从地形图中提取GCP坐标<br>②从经过几何校正的影像中提取GCP坐标<br>③从没有经过几何校正的影像中提取GCP坐标<br>④通过GPS外业测量获取GCP坐标</p>
-<p><strong>3、多项式纠正用一次项时必须至少有＿③＿。</strong><br>①1个控制点    ②2个控制点    ③3个控制点    ④4个控制点</p>
-<p><strong>4、多项式纠正用二次项时必须至少有＿④＿。</strong><br>①3个控制点    ②4个控制点    ③5个控制点    ④6个控制点</p>
-<p><strong>5、多项式纠正用一次项可以改正图像的＿①＿＿。</strong><br>①线性变形误差      ②非线性变形误差     ③前两者</p>
-<h2 id="三、问答题："><a href="#三、问答题：" class="headerlink" title="三、问答题："></a><strong>三、问答题：</strong></h2><p><strong>1、说明遥感图像几何变形误差的主要来源。</strong></p>
-<ul>
-<li>传感器成像方式引起的图像变形</li>
-<li>传感器外方位元素变化的影响：传感器成像时的位置、姿态角偏离标准位置时产生的图像变形。</li>
-<li>地形起伏引起的像点位移</li>
-<li>地球曲率引起的图像变形</li>
-<li>大气折射引起的图像变形</li>
-<li>地球自转的影响</li>
-</ul>
-<p><strong>2、试述多项式纠正法纠正卫星图像的原理和步骤。</strong></p>
-<p><strong>3、几何校正中常用的灰度重采样方法有哪三种？</strong></p>
+<h2 id="三问答题"><a href="#三问答题" class="headerlink" title="三问答题"></a><strong>三问答题</strong></h2><ol>
+<li><p><strong>辐射误差产生的主要原因有哪些?</strong></p>
+</li>
+<li><p><strong>因大气辐射引起的辐射误差，其相应的校正方法有哪些?</strong></p>
+</li>
+<li><p><strong>太阳高度角和日地距离校正的目的是什么？</strong></p>
+</li>
+<li><p><strong>地形辐射校正的目的是什么？</strong></p>
+</li>
+</ol>
+<h2 id="四计算题"><a href="#四计算题" class="headerlink" title="四计算题"></a><strong>四计算题</strong></h2><ol>
+<li><strong>给出一组大气校正时地面实测值与遥感图像上的灰度值，能够利用回归分析的方法计算得到大气干扰值。</strong></li>
+<li><strong>对于多光谱图像能够利用给出的红外波段，采用直方图或者回归分析法估算可见光波段的大气干扰值。</strong></li>
+</ol>
 
                 
             </div>
@@ -548,7 +554,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hooooon174.github.io/2021/05/28/ji-he-xiao-zheng/">https://hooooon174.github.io/2021/05/28/ji-he-xiao-zheng/</a>
+                    <a href="https://hooooon174.github.io/2021/05/30/fu-she-xiao-zheng/">https://hooooon174.github.io/2021/05/30/fu-she-xiao-zheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -757,9 +763,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/05/30/fu-she-xiao-zheng/">
                     <div class="card-image">
@@ -777,9 +784,59 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-30
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/RS/" class="post-category">
+                                    -RS
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/RS/">
+                        <span class="chip bg-color">RS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/05/28/ji-he-xiao-zheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="几何校正">
+                        
+                        <span class="card-title">几何校正</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            遥感图像数字处理笔记----几何校正
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -799,43 +856,6 @@
                         <span class="chip bg-color">RS</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/05/27/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-27
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Hon
-                            
-                        </span>
-                    </div>
                 </div>
                 
             </div>
