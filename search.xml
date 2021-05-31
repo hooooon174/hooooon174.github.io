@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>图像增强</title>
+      <link href="2021/05/31/tu-xiang-zeng-qiang/"/>
+      <url>2021/05/31/tu-xiang-zeng-qiang/</url>
+      
+        <content type="html"><![CDATA[<style>    img{        width:70%;        padding-left:15%    }</style><h1 id="图像增强"><a href="#图像增强" class="headerlink" title="图像增强"></a>图像增强</h1><h2 id="一名词解释"><a href="#一名词解释" class="headerlink" title="一名词解释"></a><strong>一名词解释</strong></h2><ol><li><strong>灰度直方图</strong></li><li><strong>对比度增强</strong></li><li><strong>平滑</strong></li><li><strong>锐化</strong></li><li><strong>滤波</strong></li><li><strong>高通滤波</strong></li><li><strong>低通滤波</strong></li><li><strong>直方图均衡化</strong></li><li><strong>直方图匹配</strong></li><li><strong>密度分割</strong></li><li><strong>影像融合</strong></li><li><strong>线性拉伸</strong></li></ol><h2 id="二填空题"><a href="#二填空题" class="headerlink" title="二填空题"></a><strong>二填空题</strong></h2><ol><li><p><strong>低通滤波是使＿＿＿ 受到抑制而让＿＿＿顺利通过，从而实现图像平滑。</strong></p></li><li><p><strong>高通滤波是使＿＿＿受到抑制而让＿＿＿顺利通过，从而实现边缘增强。</strong></p></li><li><p><strong>空间滤波是以重点突出图像上的某些特征为目地的采用空间域中的邻域处理方法，主要包括＿＿＿和＿＿＿。采用的计算方法是＿＿＿运算。</strong></p></li><li><p><strong>平滑的作用是，图像中某些亮度变化过大的区域，或出现不该有的亮点（“噪声”），采用平滑的方法减小变化，使亮度平缓或去掉不必要的“噪声”点。具体方法有＿＿＿和＿＿＿。</strong></p></li><li><p><strong>对比度增强处理主要包括＿＿＿、＿＿＿和＿＿＿</strong></p></li><li><p><strong>如果变换函数是非线性的，即为非线性变换。常用的非线性函数有＿＿＿、＿＿＿、＿＿＿、＿＿＿等。</strong></p></li><li><p><strong>下图a为一幅原始图像，图b为该图像的离散傅立叶频谱。在图b中可以看到图像的＿＿＿能量都集中在中心部分，而＿＿＿能量集中在四周，这样就便于以后对频谱进行各种处理（如滤波、降噪等）。</strong></p><p><strong><img src="/2021/05/31/tu-xiang-zeng-qiang/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA/clip_image001.jpg" alt="img"><img src="/2021/05/31/tu-xiang-zeng-qiang/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA/clip_image001-1622446567783.jpg" alt="img"></strong></p></li><li><p><strong>在空间域图像中，线性的地物为＿＿＿成份，大块面状的地物为＿＿＿成分。</strong></p></li><li><p><strong>频率域滤波的基本流程：＿＿＿、＿＿＿、＿＿＿。</strong></p></li><li><p><strong>常用的滤波器有＿＿＿、＿＿＿、＿＿＿、＿＿＿。</strong></p></li><li><p><strong>缨帽变换旋转坐标空间，但旋转后的坐标轴不是指到主成分的方向，而是指到另外的方向，这些方向与地物有密切的关系，特别是与＿＿＿和＿＿＿有关。</strong></p></li><li><p><strong>在对TM遥感数据进行研究时，采用K-T变换后提取的前三个分量是：＿＿＿、＿＿＿和＿＿＿。</strong></p></li><li><p><strong>图像融合的层次包括＿＿＿、＿＿＿、＿＿＿。</strong></p></li><li><p><strong>影像融合的常用算法有＿＿＿、＿＿＿、＿＿＿。</strong></p></li><li><p><strong>HIS中的H指＿＿＿，I指＿＿＿、S指＿＿＿。</strong></p></li></ol><h2 id="三不定项选择题"><a href="#三不定项选择题" class="headerlink" title="**三不定项选择题"></a>**三不定项选择题</h2><ol><li><p><strong>以下属于局部处理的操作的是＿＿＿。</strong></p><p><strong>①灰度线性变换   ②二值化   ③傅里叶变换  ④中值滤波</strong></p></li><li><p><strong>图像与灰度直方图间的对应关系是＿＿＿。</strong></p><p><strong>①一一对应   ②多对一   ③一对多  ④都不对</strong></p></li><li><p><strong>假定像元亮度随机分布时，直方图应是正态分布的。以下情况均是图像对比度较小，图像质量较差的反映。</strong></p><p><strong>1）峰值偏向亮度坐标轴左侧，则图像＿＿＿。</strong></p><p><strong>2）峰值偏向坐标轴右侧，则图像＿＿＿。</strong></p><p><strong>3）峰值提升过陡、过窄，则图像的＿＿＿。</strong></p><p><strong>①偏暗  ②偏亮   ③亮度值过于集中</strong></p></li><li><p><strong>为了突出图像的边缘、线状目标或某些亮度变化率大的部分，可采用锐化方法。锐化后的图像已不再具有原遥感图像的特征而成为边缘图像。几种常用的锐化算子包括＿＿＿。</strong></p><p><strong>①罗伯特梯度  ②Sobel梯度  ③Laplacian算子   ④Prewitt梯度</strong></p></li></ol><h2 id="四问答题"><a href="#四问答题" class="headerlink" title="四问答题"></a><strong>四问答题</strong></h2><ol><li><p><strong>图像增强的主要目的是什么？包含的主要内容有哪些？</strong></p></li><li><p><strong>图像增强的主要目的是什么？包含的主要内容有哪些？</strong></p></li><li><p><strong>图像增强的主要目的是什么？包含的主要内容有哪些？</strong></p></li><li><p><strong>常用的频率域低通和高通滤波器有哪些？</strong></p></li><li><p><strong>设计一个线性变换函数，使得线性变换前图像亮度范围xa为a1～a2，变换后图像亮度范围xb为b1～b2，变换关系是直线，写出灰度变换方程。</strong></p></li><li><p><strong>设计一个线性变换函数，使得线性变换前图像亮度范围xa为a1～a2，变换后图像亮度范围xb为b1～b2，变换关系是直线，写出灰度变换方程。</strong></p></li><li><p><strong>下图为一个3*3的图像窗口，1）试问经过中值滤波后，该窗口中心像元的值，并写出计算过程。2）采用均值滤波后，该窗口中心像元的值，请写出滤波模板与计算过程。</strong><br><strong><img src="/2021/05/31/tu-xiang-zeng-qiang/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA/clip_image001.png" alt="img"></strong></p></li><li><p><strong>下图为数字图像，请用梯度法计算边缘增强后得到的新数字图像，采用的模板为<img src="/2021/05/31/tu-xiang-zeng-qiang/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA/clip_image002.png" alt="img">，<img src="/2021/05/31/tu-xiang-zeng-qiang/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA/clip_image004.png" alt="img">。为了能对图像的最后一行和最后一列也进行正常处理，可以通过复制最后一行一列的办法，先将图像扩展为6*6的图像再进行梯度计算。</strong></p><table><thead><tr><th><strong>1</strong></th><th><strong>1</strong></th><th><strong>5</strong></th><th><strong>5</strong></th><th><strong>5</strong></th></tr></thead><tbody><tr><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>5</strong></td><td><strong>10</strong></td><td><strong>10</strong></td></tr><tr><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>5</strong></td><td><strong>10</strong></td><td><strong>10</strong></td></tr><tr><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>5</strong></td><td><strong>5</strong></td><td><strong>10</strong></td></tr><tr><td><strong>1</strong></td><td><strong>1</strong></td><td><strong>5</strong></td><td><strong>5</strong></td><td><strong>10</strong></td></tr></tbody></table></li><li><p><strong>直方图均衡化,设一幅图像由10行和10列（100个像元）组成，8个灰度级。对图像进行直方图均衡化，请给出原始灰度级与直方图均衡化后灰度级之间的变换关系及直方图。</strong></p><table><thead><tr><th align="center"><strong>原灰度级k</strong></th><th><strong>频数nk</strong></th></tr></thead><tbody><tr><td align="center"><strong>0</strong></td><td><strong>10</strong></td></tr><tr><td align="center"><strong>1</strong></td><td><strong>20</strong></td></tr><tr><td align="center"><strong>2</strong></td><td><strong>0</strong></td></tr><tr><td align="center"><strong>3</strong></td><td><strong>0</strong></td></tr><tr><td align="center"><strong>4</strong></td><td><strong>5</strong></td></tr><tr><td align="center"><strong>5</strong></td><td><strong>25</strong></td></tr><tr><td align="center"><strong>6</strong></td><td><strong>40</strong></td></tr><tr><td align="center"><strong>7</strong></td><td><strong>0</strong></td></tr></tbody></table></li><li><p><strong>什么是遥感影像大气校正？为什么进行大气校正？举出一种根据影像自身性质进行大气校正的方法。</strong></p></li><li><p><strong>详细说明一种2m分辨率全色影像与10m分辨率多光谱图像融合的过程，并画出流程图。</strong></p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> -RS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>辐射校正</title>
       <link href="2021/05/30/fu-she-xiao-zheng/"/>
       <url>2021/05/30/fu-she-xiao-zheng/</url>
