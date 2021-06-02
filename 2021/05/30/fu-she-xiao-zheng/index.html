@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 艾尔之子">
+    <meta name="keywords" content="辐射校正, 艾尔之子">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 艾尔之子</title>
+    <title>辐射校正 | 艾尔之子</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">辐射校正</h1>
                 </div>
             </div>
         </div>
@@ -430,12 +430,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/RS/">
+                                <span class="chip bg-color">RS</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/RS/" class="post-category">
+                                -RS
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -444,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-27
+                    2021-05-30
                 </div>
                 
 
@@ -468,17 +481,56 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <style>
+    img{
+        width:70%;
+        padding-left:15%
+    }
+</style>
+<h1 id="辐射校正"><a href="#辐射校正" class="headerlink" title="辐射校正"></a>辐射校正</h1><p><img src="/2021/05/30/fu-she-xiao-zheng/20180322100550626.png"></p>
+<p>辐射校正的数据流和基本方法:</p>
+<p><img src="/2021/05/30/fu-she-xiao-zheng/image-20210531102714711.png"><br>遥感器校正：光学系统特征（如边缘减光)、光电变换系统的灵敏度特征的偏差、                        遥感器系统的增减及偏差相关系数（如Landsat TM和MSS)。<br>大气校正：图像测量、地面实况测量、大气光路透射比、大气光路辐射率。<br>太阳以及地形校正：太阳大气光谱辐照度、太阳光路大气投射比、太阳传播散射率、DEM（数字高程模型)。</p>
+<h2 id="一名词解释"><a href="#一名词解释" class="headerlink" title="一名词解释"></a><strong>一名词解释</strong></h2><ol>
+<li><strong>辐射误差</strong>：传感器所得到的目标测量值与目标的光谱反射率或光辐射亮度等物理量之间的差值成为辐射误差。</li>
+<li><strong>辐射定标</strong>:传感器端的辐射校正也成为辐射定标，是把只具有相对意义的离散亮度转换为具有物理意义的辐射亮度或反射率的过程。分为相对定标与绝对定标。</li>
+<li><strong>相对定标</strong>相对定标又称传感器探测仪器归一化，是为了校正传感器中各个探测元件响应度差异而对传感器测量得到的原始亮度值进行归一化的一种处理过程。</li>
+<li><strong>绝对定标</strong></li>
+<li><strong>辐射校正</strong></li>
+<li><strong>大气校正</strong>：消除大气影像的校正称为大气校正。</li>
+</ol>
+<h2 id="二填空题"><a href="#二填空题" class="headerlink" title="二填空题"></a><strong>二填空题</strong></h2><ol>
+<li><p><strong>通常把电磁波通过大气层时较少被反射、吸收或散射的，通过率较高的波段称为＿＿＿。</strong><br>大气窗口</p>
+</li>
+<li><p><strong>辐射校正包括三部分的内容：＿＿＿、＿＿＿和＿＿＿。</strong><br>遥感器校正<br>大气校正<br>太阳以及地形校正</p>
+</li>
+<li><p><strong>传感器所能接收的太阳光包括＿＿＿、被大气散射辐射的太阳光在地表的反射辐射、＿＿＿三部分。</strong><br>大气散射、反射和辐射的能量<br>地面本身辐射的能量经大气后进入传感器的能量</p>
+</li>
+<li><p><strong>在可见光波段，大气的影响主要表现为＿＿＿；在近红外，大气的影响主要表现为＿＿＿。</strong><br>大气散射</p>
+</li>
+<li><p><strong>大气散射校正主要有三种方法：（1）＿＿＿（2）＿＿＿（3）＿＿＿。</strong><br>基于模型的大气校正(描述辐射能在空间或媒质中传输过程、特性及其规律的数学方程)<br>基于地面真实数据的经验方程方法<br>基于暗像元的大气校正(理论基础：大气散射的选择性，即大气散射主要发生在可见光中的短波波段，对近红外和中红外波段几乎无影响    回归分析法、直方图法) </p>
+</li>
+<li><p><strong>大气的散射与辐射光波长有密切的关系，对短波长的散射比长波长的散射要＿＿＿得多。</strong><br>大</p>
+</li>
+<li><p><strong>为了尽量减少＿＿＿和＿＿＿引起的辐射误差，遥感卫星大多设计在同一个地方时间通过当地上空，但由于季节的变化和地理经纬度的变化，两者的变化是不可避免的。</strong><br>太阳高度角<br>日地距离(方位角?)</p>
+</li>
+<li><p><strong>在使用透镜的光学系统中，由于镜头光学特性的非均匀性，在其成像平面上存在着边缘部分比中间部分暗的现象，称为＿＿＿。</strong></p>
+</li>
+</ol>
+<h2 id="三问答题"><a href="#三问答题" class="headerlink" title="三问答题"></a><strong>三问答题</strong></h2><ol>
+<li><p><strong>辐射误差产生的主要原因有哪些?</strong><br>①传感器本身的性能引起的辐射误差。<br>②大气的散射和吸收引起的辐射误差。<br>③地形影像和光照条件的变化引起的辐射误差。</p>
+</li>
+<li><p><strong>因大气辐射引起的辐射误差，其相应的校正方法有哪些?</strong><br>相对大气矫正法：有内部平均法与平场域法<br>基于模型的大气校正：通过(辐射传输方程)描述辐射能在空间或媒质中传输过程、特性及其规律的数学方程进行校正，得到的是近似解，校正后的图像像素为绝对值。<br>绝对大气校正：①经验方程法②暗像元法(回归分析、直方图法)</p>
+</li>
+<li><p><strong>太阳高度角和日地距离校正的目的是什么？</strong><br><strong>太阳高度角校正：</strong>考虑太阳在地球上的相对位置的季节变化，通过这个过程，不同太阳高度角照射下的图像数据的像元亮度值，被标准化到假设太阳在天顶时的像元亮度值。<br><strong>日地距离校正：</strong>用于标准化地球和太阳间的距离的季节变化。太阳辐射随日地距离的平方而减小<br><strong>应用场景：</strong>1.图像的目视解译中，把不同时间获取的遥感图像镶嵌成一幅图像，通过校正消除因不同太阳辐射强度造成的图像间的明暗差异<br>2.在定量遥感中，为了研究不同季节或不同区域地表反射率的变化特征，需要获取绝对地表反射率值</p>
+</li>
+<li><p><strong>地形辐射校正的目的是什么？</strong><br>地形校正的目的是消除由地形引起的辐射亮度误差，使坡度不同但是反射性质相同的地物在图像中具有相同的亮度值。地形校正主要可以减少遥感图像中的阴影部分。</p>
+</li>
+</ol>
+<h2 id="四计算题"><a href="#四计算题" class="headerlink" title="四计算题"></a><strong>四计算题</strong></h2><ol>
+<li><strong>给出一组大气校正时地面实测值与遥感图像上的灰度值，能够利用回归分析的方法计算得到大气干扰值。</strong></li>
+<li><strong>对于多光谱图像能够利用给出的红外波段，采用直方图或者回归分析法估算可见光波段的大气干扰值。</strong></li>
+</ol>
+<p>参考</p>
 
                 
             </div>
@@ -505,7 +557,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hooooon174.github.io/2021/05/27/hello-world/">https://hooooon174.github.io/2021/05/27/hello-world/</a>
+                    <a href="https://hooooon174.github.io/2021/05/30/fu-she-xiao-zheng/">https://hooooon174.github.io/2021/05/30/fu-she-xiao-zheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -542,7 +594,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/RS/">
+                                    <span class="chip bg-color">RS</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -714,24 +770,24 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/05/28/ji-he-xiao-zheng/">
+                <a href="/2021/05/31/tu-xiang-zeng-qiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="几何校正">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="图像增强">
                         
-                        <span class="card-title">几何校正</span>
+                        <span class="card-title">图像增强</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            遥感图像数字处理笔记----几何校正
+                            遥感图像数字处理笔记----图像增强
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-31
                         </span>
                         <span class="publish-author">
                             
@@ -760,37 +816,48 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/27/hello-world/">
+                <a href="/2021/05/28/ji-he-xiao-zheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="几何校正">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">几何校正</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            遥感图像数字处理笔记----几何校正
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Hon
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/RS/" class="post-category">
+                                    -RS
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/RS/">
+                        <span class="chip bg-color">RS</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
