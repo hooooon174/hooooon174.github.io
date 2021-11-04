@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title>近期</title>
-      <link href="2021/08/22/jin-qi/"/>
-      <url>2021/08/22/jin-qi/</url>
+      <title>geopandas学习记录</title>
+      <link href="2021/11/04/geopandas-xue-xi-ji-lu/"/>
+      <url>2021/11/04/geopandas-xue-xi-ji-lu/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<style>    img{        width:70%;        padding-left:15%    }</style>]]></content>
       
       
+      <categories>
+          
+          <category> -GIS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> geopandas </tag>
+            
+        </tags>
       
     </entry>
     
