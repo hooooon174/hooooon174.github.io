@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>GEE学习记录一</title>
+      <link href="2021/11/13/gee-xue-xi-ji-lu-1/"/>
+      <url>2021/11/13/gee-xue-xi-ji-lu-1/</url>
+      
+        <content type="html"><![CDATA[<style>    img{        width:70%;        padding-left:15%    }</style><p>​        趁着疫情，在寝室学习一下GEE，在查阅了一些资料后，选择了Python版本的geemap进行学习。</p><h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>​        由于平时接触过Anaconda，因此并没有废多少时间。通过conda创建了python版本为3.7的虚拟环境，并按照教程安装了所需要的包。授权gee时出现两个问题。<br>一为在conda中初始化失败，错误代码为10060，由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。解决方法为将VPN设置为全局代理。<br>二为代码中Map显示失败，需要添加如下代码：</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># method： 设置代理</span><span class="token keyword">import</span> osos<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'HTTP_PROXY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:10809'</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'HTTPS_PROXY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:10809'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h1 id="动态底图的添加"><a href="#动态底图的添加" class="headerlink" title="动态底图的添加"></a>动态底图的添加</h1><p>​        首先查看geemap提供了哪些底图，使用以下代码。</p><pre class="line-numbers language-python" data-language="python"><code class="language-python">m <span class="token operator">=</span> geemap<span class="token punctuation">.</span>Map<span class="token punctuation">(</span><span class="token punctuation">)</span>m<span class="token punctuation">.</span>basemap_demo<span class="token punctuation">(</span><span class="token punctuation">)</span>m<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>​        运行后可以在basemaps中看到可供使用的底图。<img src="/../GEE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951/image-20211113170831666.png" alt="image-20211113170831666"></p><p>​        若想在地图中添加底图，可添加以下代码：</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#以ESRI为例</span>Map<span class="token punctuation">.</span>add_basemap<span class="token punctuation">(</span><span class="token string">"ESRI"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> -GEE </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GEE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>geopandas学习记录</title>
       <link href="2021/11/04/geopandas-xue-xi-ji-lu/"/>
       <url>2021/11/04/geopandas-xue-xi-ji-lu/</url>
