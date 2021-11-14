@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="geopandas学习记录, 艾尔之子">
+    <meta name="keywords" content="GEE学习记录2 导出数据, 艾尔之子">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>geopandas学习记录 | 艾尔之子</title>
+    <title>GEE学习记录2 导出数据 | 艾尔之子</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">geopandas学习记录</h1>
+                    <h1 class="description center-align post-title">GEE学习记录2 导出数据</h1>
                 </div>
             </div>
         </div>
@@ -432,8 +432,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/geopandas/">
-                                <span class="chip bg-color">geopandas</span>
+                            <a href="/tags/GEE/">
+                                <span class="chip bg-color">GEE</span>
                             </a>
                         
                     </div>
@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/GIS/" class="post-category">
-                                -GIS
+                            <a href="/categories/GEE-Python-RS/" class="post-category">
+                                -GEE -Python -RS
                             </a>
                         
                     </div>
@@ -457,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-04
+                    2021-11-14
                 </div>
                 
 
@@ -481,13 +481,93 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <style>
-    img{
-        width:70%;
-        padding-left:15%
-    }
-</style>
+                <p>​        GIS软件应用实验中，USLE模型需要用到NDVI数据，GEE可以很快的进行NDVI的计算与数据的导出，省了很多时间。</p>
+<p>​        在实验课中，我选取的研究区为若尔盖，因此代码都以若尔盖为例。<br>​        首先导入对应的包，并设置代理。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> geemap
+<span class="token keyword">import</span> ee
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'HTTP_PROXY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:10809'</span>
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'HTTPS_PROXY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:10809'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>​        初始化地图，在初始化地图过程中，花费了很多时间，卡在了读取路径这一步，最终也没有解决。具体原因为斜杠或者反斜杠在python中的具体编码问题，读取函数的输入路径为bytes编码，字符串为utf-8编码，因此出现了冲突，具体可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_18888869/article/details/82625343">(14条消息) python 读取数据出现UnicodeDecodeError：: ‘utf-8’ codec can’t decode byte 0xc8 in position 0: invalid contin_Rookiekk-CSDN博客</a>。</p>
+<p>​        NDVI数据并没有直接计算，采用的是GEE提供的32天NDVI合成产品，选取了2020年一整年的数据并计算年NDVI最大值。数据集描述如下图，可用日期开始时间为2013年4月。<br><img src="/../GEE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/image-20211114175802147.png"></p>
+<p>​        代码如下。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#初始化地图</span>
+Map <span class="token operator">=</span> geemap<span class="token punctuation">.</span>Map<span class="token punctuation">(</span>center<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">33</span><span class="token punctuation">,</span><span class="token number">103</span><span class="token punctuation">]</span><span class="token punctuation">,</span>zoom<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">)</span>
+
+<span class="token comment">#添加若尔盖县界</span>
+ruoergai_shp <span class="token operator">=</span> <span class="token string">'ruoergai.shp'</span>
+ruoergai <span class="token operator">=</span> geemap<span class="token punctuation">.</span>shp_to_ee<span class="token punctuation">(</span>ruoergai_shp<span class="token punctuation">)</span>
+Map<span class="token punctuation">.</span>addLayer<span class="token punctuation">(</span>ruoergai<span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token string">'ruoergai'</span><span class="token punctuation">)</span>
+
+<span class="token comment">#添加数据集</span>
+l8_NDVI_2020 <span class="token operator">=</span> ee<span class="token punctuation">.</span>ImageCollection<span class="token punctuation">(</span><span class="token string">"LANDSAT/LC08/C01/T1_32DAY_NDVI"</span><span class="token punctuation">)</span>\
+                <span class="token punctuation">.</span>filterDate<span class="token punctuation">(</span><span class="token string">'2020-01-01'</span><span class="token punctuation">,</span> <span class="token string">'2020-12-31'</span><span class="token punctuation">)</span>
+
+<span class="token comment">#裁剪</span>
+NDVI_20_max <span class="token operator">=</span> l8_NDVI_2020<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>clipToCollection<span class="token punctuation">(</span>ruoergai<span class="token punctuation">)</span>
+
+<span class="token comment">#添加图层</span>
+Map<span class="token punctuation">.</span>addLayer<span class="token punctuation">(</span>NDVI_20_max<span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token string">'min'</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span><span class="token string">'max'</span><span class="token punctuation">:</span> <span class="token number">1.0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token string">"NDVI_20_max"</span><span class="token punctuation">)</span>
+
+Map<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>​        代码运行后如下。<br><img src="/../GEE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/image-20211114175942850.png" alt="image-20211114175942850"></p>
+<p>​        随后进行数据的导出。由于GEE数据导出的限制，数据太大无法一次性导出，因此按照实际需求将若尔盖县分为四个区域导出。<br>​        首先，将若尔盖县划分为四个区域。</p>
+<pre class="line-numbers language-pyton" data-language="pyton"><code class="language-pyton">import geopandas as gpd
+temp &#x3D; gpd.read_file(&quot;..&#x2F;geemap&#x2F;ruoergai_gcs.shp&quot;)
+print(temp.bounds)
+minx &#x3D; float(temp.bounds.minx)
+miny &#x3D; float(temp.bounds.miny)
+maxx &#x3D; float(temp.bounds.maxx)
+maxy &#x3D; float(temp.bounds.maxy)
+center_x &#x3D; (minx+ maxx)&#x2F;2
+center_y &#x3D; (miny+ maxy)&#x2F;2
+print(center_x)
+print(center_y)
+roi_01 &#x3D; ee.Geometry.Polygon([[minx,miny],[minx,center_y],[center_x,center_y],[center_x,miny]])
+Map.addLayer(roi_01,&#123;&#125;,&quot;roi_01&quot;)
+roi_02 &#x3D; ee.Geometry.Polygon([[minx,center_y],[minx,maxy],[center_x,maxy],[center_x,center_y]])
+Map.addLayer(roi_02,&#123;&#125;,&quot;roi_02&quot;)
+roi_03 &#x3D; ee.Geometry.Polygon([[center_x,center_y],[center_x,maxy],[maxx,maxy],[maxx,center_y]])
+Map.addLayer(roi_03,&#123;&#125;,&quot;roi_03&quot;)
+roi_04 &#x3D; ee.Geometry.Polygon([[center_x,miny],[center_x,center_y],[maxx,center_y],[maxx,miny]])
+Map.addLayer(roi_04,&#123;&#125;,&quot;roi_04&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>​        运行后结果如下。<br><img src="/../GEE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/image-20211114180209117.png"></p>
+<p>​        最后，进行分区导出，由于只分了四个区，没有专门写循环导出。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">roi_01 <span class="token operator">=</span> ee<span class="token punctuation">.</span>Geometry<span class="token punctuation">.</span>Polygon<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>minx<span class="token punctuation">,</span>miny<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>minx<span class="token punctuation">,</span>center_y<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>center_x<span class="token punctuation">,</span>center_y<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>center_x<span class="token punctuation">,</span>miny<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+Map<span class="token punctuation">.</span>addLayer<span class="token punctuation">(</span>roi_01<span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token string">"roi_01"</span><span class="token punctuation">)</span>
+roi_02 <span class="token operator">=</span> ee<span class="token punctuation">.</span>Geometry<span class="token punctuation">.</span>Polygon<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>minx<span class="token punctuation">,</span>center_y<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>minx<span class="token punctuation">,</span>maxy<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>center_x<span class="token punctuation">,</span>maxy<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>center_x<span class="token punctuation">,</span>center_y<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+Map<span class="token punctuation">.</span>addLayer<span class="token punctuation">(</span>roi_02<span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token string">"roi_02"</span><span class="token punctuation">)</span>
+roi_03 <span class="token operator">=</span> ee<span class="token punctuation">.</span>Geometry<span class="token punctuation">.</span>Polygon<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>center_x<span class="token punctuation">,</span>center_y<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>center_x<span class="token punctuation">,</span>maxy<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>maxx<span class="token punctuation">,</span>maxy<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>maxx<span class="token punctuation">,</span>center_y<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+Map<span class="token punctuation">.</span>addLayer<span class="token punctuation">(</span>roi_03<span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token string">"roi_03"</span><span class="token punctuation">)</span>
+roi_04 <span class="token operator">=</span> ee<span class="token punctuation">.</span>Geometry<span class="token punctuation">.</span>Polygon<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span>center_x<span class="token punctuation">,</span>miny<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>center_x<span class="token punctuation">,</span>center_y<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>maxx<span class="token punctuation">,</span>center_y<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>maxx<span class="token punctuation">,</span>miny<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+Map<span class="token punctuation">.</span>addLayer<span class="token punctuation">(</span>roi_04<span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token string">"roi_04"</span><span class="token punctuation">)</span>
+<span class="token comment">#导出roi_02</span>
+out_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>expanduser<span class="token punctuation">(</span><span class="token string">'~'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'Downloads'</span><span class="token punctuation">)</span>
+filename <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>out_dir<span class="token punctuation">,</span> <span class="token string">'NDVI_20_max_roi02.tif'</span><span class="token punctuation">)</span>
+
+region <span class="token operator">=</span> roi_02
+image <span class="token operator">=</span> NDVI_20_max
+geemap<span class="token punctuation">.</span>ee_export_image<span class="token punctuation">(</span>image<span class="token punctuation">,</span> filename<span class="token operator">=</span>filename<span class="token punctuation">,</span> scale<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">,</span> region<span class="token operator">=</span>region<span class="token punctuation">,</span> file_per_band<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+<span class="token comment">#导出roi_03</span>
+out_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>expanduser<span class="token punctuation">(</span><span class="token string">'~'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'Downloads'</span><span class="token punctuation">)</span>
+filename <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>out_dir<span class="token punctuation">,</span> <span class="token string">'NDVI_20_max_roi03.tif'</span><span class="token punctuation">)</span>
+
+region <span class="token operator">=</span> roi_03
+image <span class="token operator">=</span> NDVI_20_max
+geemap<span class="token punctuation">.</span>ee_export_image<span class="token punctuation">(</span>image<span class="token punctuation">,</span> filename<span class="token operator">=</span>filename<span class="token punctuation">,</span> scale<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">,</span> region<span class="token operator">=</span>region<span class="token punctuation">,</span> file_per_band<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+<span class="token comment">#导出roi_04</span>
+out_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>expanduser<span class="token punctuation">(</span><span class="token string">'~'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'Downloads'</span><span class="token punctuation">)</span>
+filename <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>out_dir<span class="token punctuation">,</span> <span class="token string">'NDVI_20_max_roi04.tif'</span><span class="token punctuation">)</span>
+
+region <span class="token operator">=</span> roi_04
+image <span class="token operator">=</span> NDVI_20_max
+geemap<span class="token punctuation">.</span>ee_export_image<span class="token punctuation">(</span>image<span class="token punctuation">,</span> filename<span class="token operator">=</span>filename<span class="token punctuation">,</span> scale<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">,</span> region<span class="token operator">=</span>region<span class="token punctuation">,</span> file_per_band<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>​        代码执行完毕后，查看文件夹，数据成功下载。<br><img src="/../GEE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/image-20211114180443013.png"></p>
+<p>​        在Arcgis中打开，查看数据，GEE导出数据的默认地理坐标系为WGS84，没有投影。<br><img src="/../GEE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/image-20211114180907698.png"></p>
 
                 
             </div>
@@ -514,7 +594,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hooooon174.github.io/2021/11/04/geopandas-xue-xi-ji-lu/">https://hooooon174.github.io/2021/11/04/geopandas-xue-xi-ji-lu/</a>
+                    <a href="https://hooooon174.github.io/2021/11/14/gee-xue-xi-ji-lu-2-dao-chu-shu-ju/">https://hooooon174.github.io/2021/11/14/gee-xue-xi-ji-lu-2-dao-chu-shu-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -552,8 +632,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/geopandas/">
-                                    <span class="chip bg-color">geopandas</span>
+                                <a href="/tags/GEE/">
+                                    <span class="chip bg-color">GEE</span>
                                 </a>
                             
                         </div>
@@ -723,41 +803,43 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/13/gee-xue-xi-ji-lu-1/">
+                <a href="/2021/11/14/gee-xue-xi-ji-lu-2-dao-chu-shu-ju/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="GEE学习记录一">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="GEE学习记录2 导出数据">
                         
-                        <span class="card-title">GEE学习记录一</span>
+                        <span class="card-title">GEE学习记录2 导出数据</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            GEE学习记录一
+                            GEE学习记录2 导出数据
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/GEE/" class="post-category">
-                                    -GEE
+                            <a href="/categories/GEE-Python-RS/" class="post-category">
+                                    -GEE -Python -RS
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -776,31 +858,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/31/tu-xiang-zeng-qiang/">
+                <a href="/2021/11/13/gee-xue-xi-ji-lu-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="图像增强">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="GEE学习记录一">
                         
-                        <span class="card-title">图像增强</span>
+                        <span class="card-title">GEE学习记录一</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            遥感图像数字处理笔记----图像增强
+                            GEE学习记录一
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/RS/" class="post-category">
-                                    -RS
+                            <a href="/categories/GEE-Python-RS/" class="post-category">
+                                    -GEE -Python -RS
                                 </a>
                             
                             
@@ -810,8 +892,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/RS/">
-                        <span class="chip bg-color">RS</span>
+                    <a href="/tags/GEE/">
+                        <span class="chip bg-color">GEE</span>
                     </a>
                     
                 </div>
