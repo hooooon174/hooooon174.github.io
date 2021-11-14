@@ -432,8 +432,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/GEE/">
-                                <span class="chip bg-color">GEE</span>
+                            <a href="/tags/GEE-Python-RS/">
+                                <span class="chip bg-color">GEE Python RS</span>
                             </a>
                         
                     </div>
@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/GEE-Python-RS/" class="post-category">
-                                -GEE -Python -RS
+                            <a href="/categories/GEE/" class="post-category">
+                                -GEE
                             </a>
                         
                     </div>
@@ -481,7 +481,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>​        GIS软件应用实验中，USLE模型需要用到NDVI数据，GEE可以很快的进行NDVI的计算与数据的导出，省了很多时间。</p>
+                <style>
+    img{
+        width:90%;
+        padding-left:5%
+    }
+</style>
+
+<p>​        GIS软件应用实验中，USLE模型需要用到NDVI数据，GEE可以很快的进行NDVI的计算与数据的导出，省了很多时间。</p>
 <p>​        在实验课中，我选取的研究区为若尔盖，因此代码都以若尔盖为例。<br>​        首先导入对应的包，并设置代理。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> geemap
 <span class="token keyword">import</span> ee
@@ -512,7 +519,7 @@ Map<span class="token punctuation">.</span>addLayer<span class="token punctuatio
 
 Map<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>​        代码运行后如下。<br><img src="/../GEE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/image-20211114175942850.png" alt="image-20211114175942850"></p>
+<p>​        代码运行后如下。<br><img src="/../GEE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/image-20211114175942850.png"></p>
 <p>​        随后进行数据的导出。由于GEE数据导出的限制，数据太大无法一次性导出，因此按照实际需求将若尔盖县分为四个区域导出。<br>​        首先，将若尔盖县划分为四个区域。</p>
 <pre class="line-numbers language-pyton" data-language="pyton"><code class="language-pyton">import geopandas as gpd
 temp &#x3D; gpd.read_file(&quot;..&#x2F;geemap&#x2F;ruoergai_gcs.shp&quot;)
@@ -632,8 +639,8 @@ geemap<span class="token punctuation">.</span>ee_export_image<span class="token 
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/GEE/">
-                                    <span class="chip bg-color">GEE</span>
+                                <a href="/tags/GEE-Python-RS/">
+                                    <span class="chip bg-color">GEE Python RS</span>
                                 </a>
                             
                         </div>
@@ -831,8 +838,8 @@ geemap<span class="token punctuation">.</span>ee_export_image<span class="token 
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/GEE-Python-RS/" class="post-category">
-                                    -GEE -Python -RS
+                            <a href="/categories/GEE/" class="post-category">
+                                    -GEE
                                 </a>
                             
                             
@@ -843,8 +850,8 @@ geemap<span class="token punctuation">.</span>ee_export_image<span class="token 
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/GEE/">
-                        <span class="chip bg-color">GEE</span>
+                    <a href="/tags/GEE-Python-RS/">
+                        <span class="chip bg-color">GEE Python RS</span>
                     </a>
                     
                 </div>
