@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>python绘制栅格数据箱型图</title>
+      <link href="2022/03/20/python-hui-zhi-zha-ge-shu-ju-xiang-xing-tu/"/>
+      <url>2022/03/20/python-hui-zhi-zha-ge-shu-ju-xiang-xing-tu/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>土地利用桑基图</title>
       <link href="2021/11/28/tu-di-li-yong-sang-ji-tu/"/>
       <url>2021/11/28/tu-di-li-yong-sang-ji-tu/</url>
@@ -45,7 +58,11 @@
       
         <tags>
             
-            <tag> GEE </tag>
+            <tag> -RS </tag>
+            
+            <tag> -GEE </tag>
+            
+            <tag> -Python </tag>
             
         </tags>
       
@@ -63,14 +80,18 @@
       
       <categories>
           
-          <category> -GEE -Python -RS </category>
+          <category> -GEE </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> GEE </tag>
+            <tag> -RS </tag>
+            
+            <tag> -GEE </tag>
+            
+            <tag> -Python </tag>
             
         </tags>
       
