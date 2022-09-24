@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "韩荣主页"#"Your Name / Site Title"
+title                    : "主页"#"Your Name / Site Title"
 title_separator          : "-"
 name                     : &name "韩荣" #"Your Name" 修改过
 description              : &description  "热爱技术，热爱生活。" #"personal description" 修改过
