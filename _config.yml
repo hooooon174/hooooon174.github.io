@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "主页"#"Your Name / Site Title"
 title_separator          : "-"
 name                     : &name "韩荣" #"Your Name" 修改过
-description              : &description  "热爱技术，热爱生活。" #"personal description" 修改过
+description              : &description  "热爱生活，热爱生活。" #"personal description" 修改过
 url                      : https://hooooon174.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "hooooon174/hooooon174.github.io"
@@ -83,11 +83,11 @@ author:
   name             : "韩荣"
   avatar           : "profile.png"
   bio              : "张华考上了北京大学；李萍进了中等技术学校；我在百货公司当售货员：我们都有光明的前途"
-  location         : "四川省成都市"
+  location         : "天津市"
   employer         :
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : #"http://yourfullgooglescholarurl.com"
-  email            : "hlb@stu.cdut.edu.cn"
+  email            : "longbinhan@tju.edu.cn"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
